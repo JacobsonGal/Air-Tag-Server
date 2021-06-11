@@ -1,0 +1,11 @@
+{
+  "name": "air_tag_server",
+  "version": "1.0.0",
+  "description": "The AirTags server",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Gal Jacobson",
+  "license": "ISC"
+}
