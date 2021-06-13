@@ -6,17 +6,24 @@ const http = require("http");
 var schema = buildSchema(`
   type Query {
     hello: String
-    getPost:Post
+    location: Location
   }
-  type Post {
-    id: Int,
-    title:String
+  type Location {
+    name:String,
+    address:String
+    lat: Float,
+    lng: Float,
   }
 `);
 
 var root = {
   hello: () => "Hello world!",
-  getPost: () => ({ id: 1, title: "hello world" }),
+  location: () => ({
+    name: "Tel-Aviv",
+    address: "Rothschild 60",
+    lat: 32.09,
+    lng: 34.7818,
+  }),
 };
 var app = express();
 app.use(
@@ -28,15 +35,3 @@ app.use(
   })
 );
 app.listen(8000, () => console.log("Now browse to localhost:8000/graphql"));
-
-// const hostname = "127.0.0.1";
-// const port = 9000;
-// const server = http.createServer((req, res) => {
-//   res.statusCode = 200;
-//   res.setHeader("Content-Type", "text/plain");
-//   res.end("Hello World\n");
-// });
-
-// server.listen(port, hostname, () => {
-//   console.log(`Server running at http://${hostname}:${port}`);
-// });
